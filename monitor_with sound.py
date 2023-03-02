@@ -128,7 +128,7 @@ while True:
     # Set the time for automated frequency blacklisting
     blacklist_time_question = str(input("Do you want to use the default scan time for blacklisting frequencies? (60s) (y/n): "))
     if blacklist_time_question == 'y':
-        print(f"Scanning for frequencies to be blacklisted. This will take {blacklist_time_default}.")
+        print(f"Scanning for frequencies to be blacklisted. This will take {blacklist_time_default} seconds.")
         t_end = time.time() + blacklist_time_default
         while time.time() < t_end:
 
