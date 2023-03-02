@@ -195,35 +195,6 @@ while True:
     else:
         print("Error in input. Please choose y or n.")
 
-t_end = time.time() + blacklist_time_custom
-while time.time() < t_end:
-
-    # Read samples from the RTL-SDR device
-    samples3 = sdr.read_samples(num_samples)
-
-    # Calculate the frequency range of the samples
-    freq_range3 = np.linspace(start_freq, end_freq, num_samples, endpoint=False)
-    
-    # Convert the samples to a power spectrum
-    spectrum3 = np.abs(np.fft.fftshift(np.fft.fft(samples3)))
-    
-    # Find the peak frequency in the spectrum
-    peak_index3 = np.argmax(spectrum3)
-    peak_freq3 = freq_range3[peak_index3]
-
-    # Convert peak frequency to MHz
-    peak_freq_mhz3 = f"{peak_freq3 / 1e6:.3f}"
-
-    for i in blacklist:
-        if i == peak_freq_mhz3:
-            break
-    else:
-        blacklist.append(peak_freq_mhz3)
-        print("Added frequency to blacklist")
-
-print(f"The following frequencie(s) are blacklisted: {blacklist}")
-print("Blacklist created successfully!")
-print("CTRL + c to stop")
 
 # The main loop with exception handling
 try:
