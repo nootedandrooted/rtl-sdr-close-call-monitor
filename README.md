@@ -28,7 +28,7 @@ pip install numpy rtlsdr playsound
 ### Usage
 Connect an RTL-SDR device to your computer.
     Open a terminal and navigate to the directory containing the python script.
-    Run the script using `python3 name_of_the_script_here.py`.
+    Run the script using `python3 monitor_with_sound.py`.
     The script will prompt you to enter various options:
     
    `Sample rate`: choose between the default value of 2.56MHz or a custom value (in Hz).
