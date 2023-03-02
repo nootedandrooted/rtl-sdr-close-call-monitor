@@ -1,6 +1,6 @@
 # rtl-sdr-close-call-monitor
 
-This script uses an RTL-SDR device to detect peak signals on a user specified frequency range. The script can also make an automatic blacklist so that different sources of RF noise won't cause continuous false positives. This script can be used to monitor certain frequencies for a wide range of purposes such as: 
+These scripts use an RTL-SDR device to detect peak signals on a user specified frequency range. The scripts can also make an automatic blacklist so that different sources of RF noise won't cause continuous false positives. There are two scripts provided as examples. The scripts can be used to monitor certain frequencies for a wide range of purposes such as: 
 
 - In criminal investigations, a close-call RF signal monitor can be used to detect and track communication signals used by criminals. This can help law enforcement agencies gather intelligence and evidence, and even prevent future crimes from being committed. By analyzing the frequency and strength of signals emitted by communication devices, a close-call RF signal monitor can provide valuable insights into the movements and activities of suspects, allowing investigators to piece together a timeline of events and make informed decisions about how to proceed with a case.
 
@@ -26,9 +26,10 @@ or
 pip install numpy rtlsdr playsound
 
 ### Usage
+
 Connect an RTL-SDR device to your computer.
     Open a terminal and navigate to the directory containing the python script.
-    Run the script using `python3 monitor_with_sound.py`.
+    Run the monitor with sound script using `python3 monitor_with_sound.py` or run the CSV logging script using `python3 csv_logging.py`
     The script will prompt you to enter various options:
     
    `Sample rate`: choose between the default value of 2.56MHz or a custom value (in Hz).
@@ -49,14 +50,23 @@ Connect an RTL-SDR device to your computer.
         
    `Scan time for automated frequency blacklisting`: choose between the default value of 60 seconds or a custom value (in seconds).
         
-   The script will then scan the specified frequency range until you interrupt it by pressing Ctrl+C). Any frequencies below the squelch level or that are    blacklisted will be skipped. Any other frequencies will play an audible alarm.
+   The script will then scan the specified frequency range until you interrupt it by pressing Ctrl+C). Any frequencies below the squelch level or that are    blacklisted will be skipped. Any other frequencies will play an audible alarm in the sound script and in CSV logging script a line will be written to      the CSV file.
    
         
-### More about an RTL-SDR here:
+### More about RTL-SDR
+
 https://www.rtl-sdr.com/about-rtl-sdr/
 
 It is important to know the basic capabilities of an RTL-SDR before using this script since you'll have to set different parameters correctly in order to have this script work as intented. 
 
-License
+### Sound file
+
+The sound file: "warning.wav" is from a royalty-free source: https://bigsoundbank.com/detail-2381-aerospace-beep-2.html.
+
+### Contributing
+
+If you would like to contribute to this project, feel free to submit a pull request or open an issue.
+
+### License
 
 This code is licensed under the GNU General Public License v3.0. See the LICENSE file for details.
