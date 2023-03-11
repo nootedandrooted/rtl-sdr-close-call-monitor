@@ -2,7 +2,7 @@
 
 These scripts use an RTL-SDR device to detect peak signals on a user specified frequency range. The scripts can also make an automatic blacklist so that different sources of RF noise won't cause continuous false positives. There are two scripts provided as examples. The scripts can be used to monitor certain frequencies for a wide range of purposes such as: 
 
-- In criminal investigations, a close-call RF signal monitor can be used to detect and track communication signals used by criminals. This can help law enforcement agencies gather intelligence and evidence, and even prevent future crimes from being committed. By analyzing the frequency and strength of signals emitted by communication devices, a close-call RF signal monitor can provide valuable insights into the movements and activities of suspects, allowing investigators to piece together a timeline of events and make informed decisions about how to proceed with a case.
+- In criminal investigations, a close-call RF signal monitor can be used to detect and track communication signals used by criminals. This can help law enforcement agencies gather intelligence and evidence, and even prevent future crimes from being committed. By analyzing the frequency and strength of signals emitted by communication devices, a close-call RF signal monitor can provide valuable insights into the movements and activities of suspects, allowing investigators to piece together a timeline of events and make informed decisions about how to proceaed with a case.
 
 - In military operations, a close-call RF signal monitor can be used to identify and track enemy communication signals, providing valuable intelligence for strategic decision-making.
 
@@ -58,6 +58,27 @@ Connect an RTL-SDR device to your computer.
 https://www.rtl-sdr.com/about-rtl-sdr/
 
 It is important to know the basic capabilities of an RTL-SDR before using this script since you'll have to set different parameters correctly in order to have this script work as intented. 
+
+### Raspberry pi 4
+
+Install rtl-sdr package:
+`sudo apt install rtl-sdr`
+
+Download rtl-sdr.rules file from the official repository:
+`sudo wget -O /etc/udev/rules.d/rtl-sdr.rules https://raw.githubusercontent.com/osmocom/rtl-sdr/master/rtl-sdr.rules`
+
+Reload udev rules by running the following command:
+`sudo udevadm control --reload-rules`
+
+Unplug and plug back in the RTL-SDR device.
+
+Install the GStreamer library and its Python bindings:
+`sudo apt-get install gstreamer1.0-plugins-good gstreamer1.0-tools python3-gi python3-gst-1.0`
+
+Make sure that the GST_PLUGIN_PATH and LD_LIBRARY_PATH environment variables are set:
+`export GST_PLUGIN_PATH=/usr/lib/gstreamer-1.0:/usr/lib/arm-linux-gnueabihf/gstreamer-1.0`
+`export LD_LIBRARY_PATH=/usr/lib/gstreamer-1.0:/usr/lib/arm-linux-gnueabihf/gstreamer-1.0`
+
 
 ### Sound file
 
