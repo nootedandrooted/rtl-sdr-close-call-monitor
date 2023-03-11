@@ -1,6 +1,6 @@
 # rtl-sdr-close-call-monitor
 
-These scripts use an RTL-SDR device to detect peak signals on a user specified frequency range. The scripts can also make an automatic blacklist so that different sources of RF noise won't cause continuous false positives. There are two scripts provided as examples. The scripts can be used to monitor certain frequencies for a wide range of purposes such as: 
+These scripts use an RTL-SDR device to detect peak signals on a user specified frequency range. The scripts can also make an automatic blacklist so that different sources of RF noise won't cause continuous false positives. There are three scripts provided as examples. The scripts can be used to monitor and log certain frequencies for a wide range of purposes such as: 
 
 - In criminal investigations, a close-call RF signal monitor can be used to detect and track communication signals used by criminals. This can help law enforcement agencies gather intelligence and evidence, and even prevent future crimes from being committed. By analyzing the frequency and strength of signals emitted by communication devices, a close-call RF signal monitor can provide valuable insights into the movements and activities of suspects, allowing investigators to piece together a timeline of events and make informed decisions about how to proceaed with a case.
 
@@ -16,6 +16,7 @@ This code requires the following dependencies to run:
     numpy
     rtlsdr
     playsound
+    requests
 
 These dependencies can be installed by running:
 
@@ -29,8 +30,11 @@ pip install numpy rtlsdr playsound
 
 Connect an RTL-SDR device to your computer.
     Open a terminal and navigate to the directory containing the python script.
-    Run the monitor with sound script using `python3 monitor_with_sound.py` or run the CSV logging script using `python3 csv_logging.py`
-    The script will prompt you to enter various options:
+    Choose a script that you want to use.
+
+   Run the monitor with sound script using `python3 monitor_with_sound.py` or run the CSV logging script using `python3 csv_logging.py` (ThingsBoard and JSON loggin in the end of this section)
+
+   The script will prompt you to enter various options:
     
    `Sample rate`: choose between the default value of 2.56MHz or a custom value (in Hz).
         
@@ -51,7 +55,18 @@ Connect an RTL-SDR device to your computer.
    `Scan time for automated frequency blacklisting`: choose between the default value of 60 seconds or a custom value (in seconds).
         
    The script will then scan the specified frequency range until you interrupt it by pressing Ctrl+C). Any frequencies below the squelch level or that are    blacklisted will be skipped. Any other frequencies will play an audible alarm in the sound script and in CSV logging script a line will be written to      the CSV file.
+
+For ThingsBoard and JSON logging:
+
+   Run `python3 thingsboard_and_json_logging.py`
    
+   The usage is the same as the other scripts but the script will also ask for `access token of the ThingsBoard server`, `ip address of the ThingsBoard server` and `port of the ThingsBoard server`.
+
+   The script will then scan the specified frequency range until you interrupt it by pressing Ctrl+C). Any frequencies below the squelch level or that are    blacklisted will be skipped. Any other frequencies will be sent to the ThingsBoard server and a line will be written to the JSON file.
+
+How to install ThingsBoard:
+
+   https://thingsboard.io/docs/user-guide/install/installation-options/
         
 ### More about RTL-SDR
 
